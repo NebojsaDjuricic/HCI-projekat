@@ -21,6 +21,5 @@
 
         <Button Name="TEbtnObrisi" Click="TEbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="377,11,264,31" FontSize="16" Height="43" >Obrisi</Button>
 
-
     </Grid>
 </Window>
