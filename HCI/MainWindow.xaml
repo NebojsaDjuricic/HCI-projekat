@@ -34,7 +34,23 @@
         <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.Background>
                 <ImageBrush ImageSource="crnobelo.jpg"></ImageBrush>
-            </Grid.Background>            
+            </Grid.Background>
+            
+            
+                <ListView Name="listaResursa" MouseLeftButtonDown="listaResursa_MouseLeftButtonDown" MouseLeftButtonUp="listaResursa_MouseLeftButtonUp" ItemsSource="{Binding Path=resLista}" Background="Bisque"  Margin="631,10,10,179"  MinWidth="88" MinHeight="179">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <Image Source="{Binding ikonica}" Width="23" Height="23"/>
+                                <TextBlock Text="   " Background="{Binding EtiketaResursa.BojaEtikete}"/>
+                                <TextBlock Text="  -  " />
+                                <TextBlock Text="{Binding ImeResursa}"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+      
+            
         </Grid>
     </DockPanel>        
            

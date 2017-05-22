@@ -61,5 +61,15 @@ namespace HCI
             var x = new TabelaEtiketa();
             x.Show();
         }
+
+        private void listaResursa_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void listaResursa_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

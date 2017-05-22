@@ -96,6 +96,8 @@
     <Compile Include="Dodaj_etiketu.xaml.cs">
       <DependentUpon>Dodaj_etiketu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Etiketa.cs" />
+    <Compile Include="Resurs.cs" />
     <Compile Include="TabelaEtiketa.xaml.cs">
       <DependentUpon>TabelaEtiketa.xaml</DependentUpon>
     </Compile>
@@ -105,6 +107,7 @@
     <Compile Include="TabelaTipova.xaml.cs">
       <DependentUpon>TabelaTipova.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tip.cs" />
     <Compile Include="Tip_Resursa.xaml.cs">
       <DependentUpon>Tip_Resursa.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Artboard.png" />
+    <Resource Include="Close_Icon.png" />
     <Content Include="Xceed.Wpf.AvalonDock.dll" />
     <Content Include="Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
     <Content Include="Xceed.Wpf.AvalonDock.Themes.Metro.dll" />

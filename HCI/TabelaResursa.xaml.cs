@@ -23,5 +23,20 @@ namespace HCI
         {
             InitializeComponent();
         }
+
+        private void dataGridResursi_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TRbtnIzmena_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TRbtnObrisi_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

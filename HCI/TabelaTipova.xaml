@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
-            <RowDefinition />
+            <RowDefinition Height="101" />
         </Grid.RowDefinitions>
 
         <Border Grid.RowSpan="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
@@ -17,10 +17,9 @@
         </Border>
 
         <DataGrid Name="dataGridTipovi" Grid.Row="0" Loaded="dataGridTipovi_Loaded" MouseEnter="dataGridTipovi_MouseEnter" AutoGenerateColumns="True" IsReadOnly="True"/>
-        <Button Name="TTbtnIzmena" Click="TTbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,29,377,29" Height="43" FontSize="16">Izmeni</Button>
-
-        <Button Name="TTbtnObrisi" Click="TTbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="377,29,264,29" Height="43" FontSize="16">Obrisi</Button>
-
+        
+        <Button Name="TTbtnIzmena" Click="TTbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,32,377,32"  FontSize="16" Height="35">Izmeni</Button>
+        <Button Name="TTbtnObrisi" Click="TTbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="389,32,252,32"  FontSize="16" Height="35">Obrisi</Button>
 
     </Grid>
 </Window>

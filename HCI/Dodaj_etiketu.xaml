@@ -24,9 +24,9 @@
         <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Width="110">Boja:</TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Width="110">Opis:</TextBlock>
 
-        <TextBox Name="Toznaka" Grid.Row="0" Grid.Column="1" FontSize="16" Margin="14, 11, 300, 12"></TextBox>
+        <TextBox Name="Eoznaka" Grid.Row="0" Grid.Column="1" FontSize="16" Margin="14, 11, 300, 12"></TextBox>
         <xctk:ColorPicker Name="bojaEtikete" Grid.Row="1" Grid.Column="1" Margin="14, 11, 350, 12" ></xctk:ColorPicker>
-        <TextBox Name="Topis" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="14, 11, 50, 12" ></TextBox>
+        <TextBox Name="Eopis" Grid.Row="2" Grid.Column="1" FontSize="16" Margin="14, 11, 50, 12" ></TextBox>
 
         <Button Name="EsaveBtn" Click="EsaveBtn_Click" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="66,124,335,14" RenderTransformOrigin="0.351,0.523" >Sacuvaj</Button>
         <Button Name="EcloseBtn" Click="EcloseBtn_Click" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="209,124,192,14" RenderTransformOrigin="0.243,0.48">Odustani</Button>

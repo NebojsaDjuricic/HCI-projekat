@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
-            <RowDefinition />
+            <RowDefinition Height="101" />
         </Grid.RowDefinitions>
 
         <Border Grid.RowSpan="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
@@ -17,9 +17,8 @@
         </Border>
 
         <DataGrid Name="dataGridEtikete" Grid.Row="0" Loaded="dataGridEtikete_Loaded" MouseEnter="dataGridEtikete_MouseEnter" AutoGenerateColumns="True" IsReadOnly="True"/>
-        <Button Name="TEbtnIzmena" Click="TEbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,11,377,31"  FontSize="16" Height="43" >Izmeni</Button>
-
-        <Button Name="TEbtnObrisi" Click="TEbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="377,11,264,31" FontSize="16" Height="43" >Obrisi</Button>
+        <Button Name="TEbtnIzmena" Click="TEbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,34,377,32"  FontSize="16" Height="35" >Izmeni</Button>
+        <Button Name="TEbtnObrisi" Click="TEbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="389,34,252,32" FontSize="16" Height="35" >Obrisi</Button>
 
     </Grid>
 </Window>

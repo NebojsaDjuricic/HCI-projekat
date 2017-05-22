@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +23,14 @@ namespace HCI
     public partial class Osnovni_podaci : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public static ObservableCollection<Tip> tipovi;
+        public static ObservableCollection<Etiketa> etikete2;
+
+        private string ikona = "Close-Icon.png";
+
+
+
+
 
         public Osnovni_podaci()
         {
@@ -35,7 +45,8 @@ namespace HCI
 
         private void btnTipR_Click(object sender, RoutedEventArgs e)
         {
-
+            var x = new Tip_Resursa();
+            x.Show();
         }
 
         private void btnIkonicaR_Click(object sender, RoutedEventArgs e)
@@ -60,12 +71,14 @@ namespace HCI
 
         private void cenaR_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void btnEtiketaR_Click(object sender, RoutedEventArgs e)
         {
-
+            var x = new Dodaj_etiketu();
+            x.Show();
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
