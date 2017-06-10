@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:HCI"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Etiketa" Height="430" Width="750" Background="#81cfff" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+        Title="Etiketa" WindowStartupLocation="CenterScreen" Height="430" Width="750" Background="#81cfff" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid Margin="50, 50, 50, 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -30,6 +33,6 @@
 
         <Button Name="EsaveBtn" Click="EsaveBtn_Click" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="66,124,335,14" RenderTransformOrigin="0.351,0.523" >Sacuvaj</Button>
         <Button Name="EcloseBtn" Click="EcloseBtn_Click" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="209,124,192,14" RenderTransformOrigin="0.243,0.48">Odustani</Button>
-
+        <Button Name="EpomocBtn" Click="EpomocBtn_Click" Grid.Column="1" Grid.Row="3" Margin="391,124,10,14" FontSize="16">Pomoc</Button>
     </Grid>
 </Window>

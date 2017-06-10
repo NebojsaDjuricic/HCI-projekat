@@ -5,20 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI"
         mc:Ignorable="d"
-        Title="TabelaEtiketa" Height="430" Width="750" Background="LightSteelBlue" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+        Title="Tabela etiketa" WindowStartupLocation="CenterScreen" Height="430" Width="750" Background="LightSteelBlue" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="101" />
+            <RowDefinition Height="228*"/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="46"/>
         </Grid.RowDefinitions>
 
         <Border Grid.RowSpan="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
 
         </Border>
 
-        <DataGrid Name="dataGridEtikete" Grid.Row="0" Loaded="dataGridEtikete_Loaded" MouseEnter="dataGridEtikete_MouseEnter" AutoGenerateColumns="True" IsReadOnly="True"/>
-        <Button Name="TEbtnIzmena" Click="TEbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,34,377,32"  FontSize="16" Height="35" >Izmeni</Button>
-        <Button Name="TEbtnObrisi" Click="TEbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="389,34,252,32" FontSize="16" Height="35" >Obrisi</Button>
+        <DataGrid Name="dataGridEtikete" Grid.Row="0" Loaded="dataGridEtikete_Loaded" MouseEnter="dataGridEtikete_MouseEnter" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Oznaka" FontSize="16" Binding="{Binding OznakaEtikete}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Boja" FontSize="16" Binding="{Binding BojaEtikete}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" FontSize="16" Binding="{Binding OpisEtikete}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+<!--
+        <Grid Grid.Row="1" DataContext="{Binding ElementName=dataGridEtikete, Path=SelectedItem}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*" />
+                <RowDefinition Height="32*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="27*" />
+                <RowDefinition Height="47*"/>
+
+
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="21">Oznaka etikete:</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=OznakaEtikete}" FontSize="16" IsReadOnly="True"  ></TextBox>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="21">Boja etikete:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=BojaEtikete}" FontSize="16" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="20">Opis etikete:</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=OpisEtikete}" FontSize="16" IsReadOnly="True" />
+
+
+
+            <TextBlock Grid.Row="5" Grid.Column="2" Name="pretragaTBlockEtiketa" Text="Trazi:" VerticalAlignment="Center" Margin="10,10,10,17" FontSize="16" Height="20"/>
+            <TextBox Grid.Row="5" Grid.Column="2" Name="pretragaTextBoxEtiketa" VerticalAlignment="Center" TextChanged="pretragaTextBoxEtiketa_TextChanged" Margin="50,1,20,1" FontSize="16" ToolTip="Trazenje tipa po oznaci" />
+
+            <TextBlock Grid.Row="0" Grid.Column="2" Name="sortEtiketa" Text="Sortiranje po:" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="21" />
+            <ComboBox Grid.Row="0" Grid.Column="2" Name="sortComboEtiketa" FontSize="16" Margin="118,0,10,0">
+                <TextBlock Text="Oznaci"/>
+                <TextBlock Text="Boji"/>
+                <TextBlock Text="Opisu"/>
+
+            </ComboBox>
+            <TextBox Grid.Row="1" Grid.Column="2" FontSize="16" Name="sortiranjeEtiketa" VerticalAlignment="Stretch"  Margin="14,0,14,0" TextChanged="sortiranjeEtiketa_TextChanged"/>
+
+        </Grid>
+-->
+        <Button Name="TEbtnIzmena" Click="TEbtnIzmena_Click" Grid.Row="2" VerticalAlignment="Center"  Margin="264,5,377,11"  FontSize="16" Height="30">Izmeni</Button>
+        <Button Name="TEbtnObrisi" Click="TEbtnObrisi_Click" Grid.Row="2" VerticalAlignment="Center"  Margin="389,5,252,11"  FontSize="16" Height="30" >Obrisi</Button>
+        <Button Name="TEpomocBtn" Click="TEpomocBtn_Click" Grid.Row="2" Margin="631,5,10,11" FontSize="16">Pomoc</Button>
     </Grid>
 </Window>

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI"
         mc:Ignorable="d"
-        Title="Osnovni_podaci" Height="430" Width="750" Background="#81cfff" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+        Title="Osnovni podaci o resursima" WindowStartupLocation="CenterScreen" Height="430" Width="750" Background="#81cfff" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="27" />
@@ -46,7 +49,7 @@
         <TextBox Name="Roznaka" Grid.Row="0" Grid.Column="1" Margin="14, 2, 300, 2"></TextBox>
         <TextBox Name="Rime" Grid.Row="1" Grid.Column="1" Margin="14, 2, 300, 2"></TextBox>
         <TextBox Name="Ropis" Grid.Row="2" Grid.Column="1" Margin="14, 2, 100, 2"></TextBox>
-        <ComboBox Name="Rtip" ItemsSource="{Binding Path=tipoviR}" SelectionChanged="tipR_SelectionChanged" Grid.Row="3" Grid.Column="1" Margin="14, 2, 300, 2"></ComboBox>
+        <ListBox Name="Rtip" ItemsSource="{Binding Path=tipoviR}" SelectionChanged="tipR_SelectionChanged" Grid.Row="3" Grid.Column="1" Margin="14, 2, 300, 2"></ListBox>
         <Button Name="btnTipR" Click="btnTipR_Click" Grid.Row="3" Grid.Column="1" VerticalAlignment="Stretch" Margin="314,1,100,1">Dodajte tip</Button>
         <ComboBox Name="frekvPojav" Grid.Row="4" Grid.Column="1" Margin="14, 2, 300, 2">
             <ComboBoxItem>Redak</ComboBoxItem>
@@ -54,28 +57,28 @@
             <ComboBoxItem IsSelected="True">Univerzalan</ComboBoxItem>
         </ComboBox>
         <Button Name="RbtnIkonica" Click="btnIkonicaR_Click" Grid.Row="5" Grid.Column="1" Margin="14, 4, 380, 4">Odaberite ikonicu</Button>
-        <Image Name="RimgIkonica" Source="{Binding Path=ikonicaResursa}" Grid.Row="5" Grid.Column="1" Stretch="Fill" Height="32" Width="32"></Image>
-        <RadioButton Name="obnovljivR" GroupName="obnovljiv" Checked="obnovljivR_Checked" IsChecked="True" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="14, 2, 390, 2">Obnovljiv</RadioButton>
-        <RadioButton Name="neobnovljivR" GroupName="obnovljiv" Checked="obnovljivR_Checked" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="160, 2, 280, 2">Neobnovljiv</RadioButton>
-        <RadioButton Name="vazanR" GroupName="strateskaVaznost" Checked="vazanR_Checked" IsChecked="True" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="14, 2, 390, 2">Vazan</RadioButton>
-        <RadioButton Name="nevazanR" GroupName="strateskaVaznost" Checked="vazanR_Checked" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="160, 2, 280, 2">Nevazan</RadioButton>
-        <RadioButton Name="eksplMoguca" GroupName="eksploatacija" Checked="eksplMoguca_Checked" IsChecked="True" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="14, 2, 390, 2">Trenutno moguca</RadioButton>
-        <RadioButton Name="eksplNemoguca" GroupName="eksploatacija" Checked="eksplMoguca_Checked" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="160, 2, 230, 2">Trenutno nemoguca</RadioButton>
+        <Image Name="RimgIkonica" Source="{Binding Path=ikonicaRe}" Grid.Row="5" Grid.Column="1" Stretch="Fill" Height="32" Width="32"></Image>
+        <RadioButton Name="obnovljivR" GroupName="obnovljiv" IsChecked="True" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="14, 2, 390, 2">Obnovljiv</RadioButton>
+        <RadioButton Name="neobnovljivR" GroupName="obnovljiv" IsChecked="False" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="160, 2, 280, 2">Neobnovljiv</RadioButton>
+        <RadioButton Name="vazanR" GroupName="strateskaVaznost" IsChecked="True" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="14, 2, 390, 2">Vazan</RadioButton>
+        <RadioButton Name="nevazanR" GroupName="strateskaVaznost" IsChecked="False" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="160, 2, 280, 2">Nevazan</RadioButton>
+        <RadioButton Name="eksplMoguca" GroupName="eksploatacija" IsChecked="True" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="14, 2, 390, 2">Trenutno moguca</RadioButton>
+        <RadioButton Name="eksplNemoguca" GroupName="eksploatacija" IsChecked="False" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="160, 2, 230, 2">Trenutno nemoguca</RadioButton>
         <ComboBox Name="jedinicaMereR" Grid.Row="9" Grid.Column="1"  Margin="14, 2, 300, 2">
             <ComboBoxItem>Merica</ComboBoxItem>
             <ComboBoxItem>Barel</ComboBoxItem>
             <ComboBoxItem>Tona</ComboBoxItem>
             <ComboBoxItem IsSelected="True">Kilogram</ComboBoxItem>
         </ComboBox>
-        <TextBox Name="cenaR" Grid.Row="10" Grid.Column="1" Margin="14, 2, 300, 2" Text="{Binding Path=CenaBinding, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="cenaR_PreviewTextInput">
+        <TextBox Name="cenaR" Grid.Row="10" Grid.Column="1" Margin="14, 2, 300, 2" >
             <!--validacija-->
 
         </TextBox>
         <DatePicker Name="datumOtkr" Grid.Row="11" Grid.Column="1" Margin="14, 2, 300, 2"></DatePicker>
-        <ListBox Name="listaEtiketa" ItemsSource="{Binding Path=etiketeLista}" Grid.Row="12" Grid.Column="1"  Margin="14, 2, 300, 2"></ListBox>
+        <ListBox Name="listaEtiketa" ItemsSource="{Binding Path=etiketeLista}" Grid.Row="12" Grid.Column="1" SelectionMode="Multiple" Margin="14, 2, 300, 2"></ListBox>
         <Button Name="btnEtiketaR" Click="btnEtiketaR_Click" Grid.Row="12" Grid.Column="1" VerticalAlignment="Stretch" Margin="314,1,100,1">Dodajte etiketu</Button>
         <Button Name="saveBtn" Click="saveBtn_Click" Grid.Row="13" Grid.Column="1" VerticalAlignment="Stretch" Margin="60,2,361,4" >Sacuvaj</Button>
         <Button Name="closeBtn" Click="closeBtn_Click" Grid.Row="13" Grid.Column="1" VerticalAlignment="Stretch" Margin="217,2,204,4">Odustani</Button>
-
+        <Button Name="pomocBtn" Click="pomocBtn_Click" Grid.Column="0" Grid.Row="13" Margin="59,2,58,4">Pomoc</Button>
     </Grid>
 </Window>

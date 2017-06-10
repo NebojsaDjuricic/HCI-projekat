@@ -5,21 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI"
         mc:Ignorable="d"
-        Title="TabelaTipova" Height="430" Width="750" Background="LightSteelBlue" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+        Title="Tabela tipova" WindowStartupLocation="CenterScreen" Height="430" Width="750" Background="LightSteelBlue" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="101" />
+            <RowDefinition Height="228*"/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="46"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.RowSpan="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
+        <Border Grid.RowSpan="2" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
 
         </Border>
 
-        <DataGrid Name="dataGridTipovi" Grid.Row="0" Loaded="dataGridTipovi_Loaded" MouseEnter="dataGridTipovi_MouseEnter" AutoGenerateColumns="True" IsReadOnly="True"/>
-        
-        <Button Name="TTbtnIzmena" Click="TTbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,32,377,32"  FontSize="16" Height="35">Izmeni</Button>
-        <Button Name="TTbtnObrisi" Click="TTbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="389,32,252,32"  FontSize="16" Height="35">Obrisi</Button>
+        <DataGrid Name="dataGridTipovi" Grid.Row="0" MouseEnter="dataGridTipovi_MouseEnter" Loaded="dataGridTipovi_Loaded"  AutoGenerateColumns="False" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Oznaka" FontSize="16" Binding="{Binding OznakaTipa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" FontSize="16" Binding="{Binding ImeTipa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" FontSize="16" Binding="{Binding OpisTipa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ikonica" FontSize="16" Binding="{Binding IkonicaTipa}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--
+        <Grid Grid.Row="1" DataContext="{Binding ElementName=dataGridTipovi, Path=SelectedItem}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="33*" />
+                <RowDefinition Height="32*" />
+                <RowDefinition Height="53*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="33*"/>
+
+
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="21">Oznaka tipa:</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=OznakaTipa}" FontSize="16" IsReadOnly="True"  ></TextBox>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="21">Ime tipa:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=ImeTipa}" FontSize="16" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="20">Opis tipa:</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=OpisTipa}" FontSize="16" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,16" FontSize="16" Height="21">Ikonica tipa:</TextBlock>
+            <Image Grid.Row="3" Grid.Column="1" Source="{Binding Path=IkonicaTipa}" Width="43" Height="43"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="2" Name="pretragaTBlockTip" Text="Trazi:" VerticalAlignment="Center" Margin="10,0,10,0" FontSize="16" ToolTip="Trazenje resursa po oznaci" Height="20"/>
+            <TextBox Grid.Row="5" Grid.Column="2" Name="pretragaTextBoxTip" VerticalAlignment="Stretch" TextChanged="pretragaTextBox_TextChanged" Margin="50,1,20,1" FontSize="16" ToolTip="Trazenje tipa po oznaci" />
+
+            <TextBlock Grid.Row="0" Grid.Column="2" Name="sortTip" Text="Sortiranje po:" VerticalAlignment="Center" Margin="10,6" FontSize="16" Height="21" />
+            <ComboBox Grid.Row="0" Grid.Column="2" Name="sortComboTip" FontSize="16" Margin="118,0,10,0">
+                <TextBlock Text="Oznaci"/>
+                <TextBlock Text="Imenu"/>
+                <TextBlock Text="Opisu"/>
+
+            </ComboBox>
+            <TextBox Grid.Row="1" Grid.Column="2" FontSize="16" Name="sortiranje" VerticalAlignment="Stretch"  Margin="14,0,14,0" TextChanged="sortiranje_TextChanged"  />
+
+        </Grid>
+-->
+        <Button Name="TTbtnIzmena" Click="TTbtnIzmena_Click" Grid.Row="2" VerticalAlignment="Center" Margin="264,5,377,11"  FontSize="16" Height="30">Izmeni</Button>
+        <Button Name="TTbtnObrisi" Click="TTbtnObrisi_Click" Grid.Row="2" VerticalAlignment="Center" Margin="389,5,252,11"  FontSize="16" Height="30" >Obrisi</Button>
+        <Button Name="TTpomocBtn" Click="TTpomocBtn_Click" Grid.Row="2" Margin="631,5,10,11" FontSize="16">Pomoc</Button>
     </Grid>
 </Window>

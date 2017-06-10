@@ -5,19 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI"
         mc:Ignorable="d"
-        Title="TabelaResursa" Height="430" Width="750" Background="LightSteelBlue" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+        Title="Tabela resursa" WindowStartupLocation="CenterScreen" Height="430" Width="750" Background="LightSteelBlue" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="101" />
+            <RowDefinition/>
+            <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.RowSpan="3" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
+        <Border Grid.RowSpan="2" Grid.Row="0" BorderBrush="Gray" BorderThickness="1">
 
         </Border>
 
-        <DataGrid Name="dataGridResursi" Grid.Row="0" Loaded="dataGridResursi_Loaded" AutoGenerateColumns="True" IsReadOnly="True"/>
-        <Button Name="TRbtnIzmena" Click="TRbtnIzmena_Click" Grid.Row="1" VerticalAlignment="Center" Margin="264,32,377,32"  FontSize="16" Height="35">Izmeni</Button>
-        <Button Name="TRbtnObrisi" Click="TRbtnObrisi_Click" Grid.Row="1" VerticalAlignment="Center" Margin="389,32,252,32"  FontSize="16" Height="35">Obrisi</Button>
+        <DataGrid Name="dataGridResursi" Grid.Row="0"  Loaded="dataGridResursi_Loaded" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Oznaka"  Binding="{Binding OznakaResursa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" Binding="{Binding ImeResursa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opis" Binding="{Binding OpisResursa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip" Binding="{Binding TipResursa.ImeTipa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Frekvencija" Binding="{Binding Frekvencija}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Strateska vaznost" Binding="{Binding Vaznost}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Mogucnost eksploatacije" Binding="{Binding Eksploatacija}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Obnovljivost" Binding="{Binding Obnovljiv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jedinica mere" Binding="{Binding Jedinica}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cena" Binding="{Binding Cena}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="1" DataContext="{Binding ElementName=dataGridResursi, Path=SelectedItem}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">Oznaka resursa:</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=OznakaResursa}" IsReadOnly="True"  ></TextBox>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">Ime resursa:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=ImeResursa}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">Opis resursa:</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=OpisResursa}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Margin="10,0,0,0">Ikonica resursa:</TextBlock>
+            <Image Grid.Row="3" Grid.Column="1" Source="{Binding Path=IkonicaResursa}" Height="24" Width="24"></Image>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Margin="10,0,0,0">Frekvencija pojavljivanja:</TextBlock>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=Frekvencija}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,0">Strateska vaznost:</TextBlock>
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Vaznost}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,0">Mogucnost eksploatacije:</TextBlock>
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=Eksploatacija}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Margin="10,0,0,0">Obnovljivost:</TextBlock>
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=Obnovljiv}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Margin="10,0,0,0">Jedinica mere:</TextBlock>
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=Jedinica}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="9" Grid.Column="0" Margin="10,0,0,0">Cena:</TextBlock>
+            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=Cena}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="10" Grid.Column="0" Margin="10,0,0,0">Datum otkrivanja:</TextBlock>
+            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=Datum}" IsReadOnly="True"/>
+
+            <TextBlock Grid.Row="11" Grid.Column="0" Margin="10,0,0,0">Tip resursa:</TextBlock>
+            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Path=TipResursa.OznakaTipa}" IsReadOnly="True" />
+
+            <TextBlock Grid.Row="4" Grid.Column="2" Name="pretragaTBlock" Text="Trazi:" Margin="14,0,0,0" ToolTip="Trazenje resursa po oznaci"/>
+            <TextBox Grid.Row="4" Grid.Column="2" Name="pretragaTextBox" VerticalAlignment="Stretch" TextChanged="pretragaTextBox_TextChanged" Margin="50,0,20,0"  ToolTip="Trazenje resursa po oznaci" />
+
+            <TextBlock Grid.Row="0" Grid.Column="2" Name="sort" Text="Sortiranje po:" Margin="14,0,0,0" />
+            <ComboBox Grid.Row="0" Grid.Column="2" Name="sortCombo" Margin="95,0,10,0">
+                <TextBlock Text="Oznaci"/>
+                <TextBlock Text="Imenu"/>
+                <TextBlock Text="Opisu"/>
+                <TextBlock Text="Frekvenciji"/>
+                <TextBlock Text="Strateskoj vaznosti"/>
+                <TextBlock Text="Mogucnosti eksploatacije"/>
+                <TextBlock Text="Obnovljivosti"/>
+                <TextBlock Text="Jedinici mere"/>
+                <TextBlock Text="Ceni"/>
+                <TextBlock Text="Datumu otkrivanja"/>
+                <TextBlock Text="Tipu"/>
+            </ComboBox>
+            <TextBox Grid.Row="1" Grid.Column="2" Name="sortEtiketa" VerticalAlignment="Stretch"  Margin="14,0,14,0"  ToolTip="Filtriranje po etiketi" TextChanged="sortEtiketa_TextChanged"/>
+
+            <Button Name="TRizmeniBtn" Click="TRizmeniBtn_Click" Grid.Row="8" Grid.Column="2" Margin="30,0,138,0">Izmeni</Button>
+            <Button Name="TRobrisiBtn" Click="TRobrisiBtn_Click" Grid.Row="8" Grid.Column="2" Margin="138,0,30,0">Obrisi</Button>
+            <Button Name="TRpomocBtn" Click="TRpomocBtn_Click" Grid.Row="11" Grid.Column="2" Margin="138,0,30,0">Pomoc</Button>
+            
+        </Grid>
+
     </Grid>
 </Window>

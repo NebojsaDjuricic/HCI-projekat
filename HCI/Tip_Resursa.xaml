@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI"
+        xmlns:c="clr-namespace:HCI"
         mc:Ignorable="d"
-        Title="Tip_Resursa" Height="430" Width="750" Background="#81cfff" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+        Title="Tip Resursa" WindowStartupLocation="CenterScreen" Height="430" Width="750" Background="#81cfff" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid Margin="50, 50, 50, 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="43"/>
@@ -32,6 +36,6 @@
         <TextBox Name="Topis" Grid.Row="3" Grid.Column="1" FontSize="16" Margin="14, 8, 50, 8" ></TextBox>
         <Button Name="TsaveBtn" Click="TsaveBtn_Click" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="66,95,335,14" RenderTransformOrigin="0.351,0.523" >Sacuvaj</Button>
         <Button Name="TcloseBtn" Click="TcloseBtn_Click" Grid.Row="4" Grid.Column="1" FontSize="16" Margin="209,95,192,14" RenderTransformOrigin="0.243,0.48">Odustani</Button>
-
+        <Button Name="TpomocBtn" Click="TpomocBtn_Click" Grid.Column="1" Grid.Row="4" Margin="391,95,10,14" FontSize="16">Pomoc</Button>
     </Grid>
 </Window>

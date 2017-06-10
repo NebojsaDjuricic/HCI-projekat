@@ -36,7 +36,7 @@ namespace HCI
             InitializeComponent();
             this.DataContext = this;
 
-            ikonicaTipa = "Close-Icon.png";
+            ikonicaTipa = "Artboard.png";
         }
 
         public String ikonicaTipa
@@ -53,12 +53,12 @@ namespace HCI
             }
         }
 
-        protected void OnPropertyChanged(string name)
+        protected void OnPropertyChanged(string ime)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                handler(this, new PropertyChangedEventArgs(name));
+                handler(this, new PropertyChangedEventArgs(ime));
             }
         }
 
@@ -69,7 +69,7 @@ namespace HCI
             InitializeComponent();
             this.DataContext = this;
 
-            ikonicaTipa = "Close-Icon.png";
+            ikonicaTipa = "Artboard.png";
         }
 
         public Tip_Resursa(String oz, String ime, String iko, String opis)
@@ -83,7 +83,6 @@ namespace HCI
             staroIme = oz;
             this.DataContext = this;
         }
-
 
         private void TbtnIkonica_Click(object sender, RoutedEventArgs e)
         {
@@ -101,10 +100,20 @@ namespace HCI
         {
             bool sadrzi = false;
 
-            if(odakle)
+            if (Toznaka.Text.Equals(""))
+            {
+                MessageBox.Show("Tip mora imati oznaku!", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (Time.Text.Equals(""))
+            {
+                MessageBox.Show("Tip mora imati ime!", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else { 
+
+          if (odakle)
             {
                 ObservableCollection<Tip> tipovi2 = new ObservableCollection<Tip>();
-                if(File.Exists("tipovi.txt"))
+                if (File.Exists("tipovi.txt"))
                 {
                     string[] lines = System.IO.File.ReadAllLines(@"tipovi.txt");
 
@@ -116,30 +125,32 @@ namespace HCI
                     }
                 }
 
-                if(pojedinacno)
+                if (pojedinacno)
                 {
-                    foreach(Tip tip in tipovi2)
+                    foreach (Tip tip in tipovi2)
                     {
-                        if(tip.OznakaTipa == Toznaka.Text)
+                        if (tip.OznakaTipa == Toznaka.Text)
                         {
                             sadrzi = true;
                         }
                     }
 
-                    if(sadrzi)
+                    if (sadrzi)
                     {
                         MessageBox.Show("Tip sa ovom oznakom vec postoji!", "Upozorenje", MessageBoxButton.OK);
-                    } else
+                    }
+                    else
                     {
-                        Tip t = new Tip(Toznaka.Text, Time.Text, Topis.Text, ikonicaTipa);
+                        Tip t = new HCI.Tip(Toznaka.Text, Time.Text, Topis.Text, ikonicaTipa);
                         tipovi2.Add(t);
                     }
 
-                } else
+                }
+                else
                 {
-                    foreach(Tip tip in tipovi2)
+                    foreach (Tip tip in tipovi2)
                     {
-                        if(tip.OznakaTipa == staroIme)
+                        if (tip.OznakaTipa == staroIme)
                         {
                             tip.OznakaTipa = Toznaka.Text;
                             tip.ImeTipa = Time.Text;
@@ -150,11 +161,11 @@ namespace HCI
                     }
                 }
 
-                if(!sadrzi)
+                if (!sadrzi)
                 {
                     String podaci = "";
 
-                    foreach(Tip t in tipovi2)
+                    foreach (Tip t in tipovi2)
                     {
                         podaci += t.OznakaTipa + "|" + t.ImeTipa + "|" + t.OpisTipa + "|" + t.IkonicaTipa + Environment.NewLine;
                     }
@@ -163,37 +174,47 @@ namespace HCI
                     this.Close();
                 }
 
-            } else
+            }
+            else
             {
                 bool ima = false;
-                Tip t = new Tip(Toznaka.Text, Time.Text, Topis.Text, ikonicaTipa);
+                Tip t = new HCI.Tip(Toznaka.Text, Time.Text, Topis.Text, ikonicaTipa);
 
-                foreach(Tip tip in Osnovni_podaci.tipovi)
+                foreach (Tip tip in Osnovni_podaci.tipovi2)
                 {
-                    if(tip.OznakaTipa == Toznaka.Text)
+                    if (tip.OznakaTipa == Toznaka.Text)
                     {
                         ima = true;
                     }
                 }
 
-                if(ima)
+                if (ima)
                 {
                     MessageBox.Show("Tip sa ovom oznakom vec postoji!", "Upozorenje", MessageBoxButton.OK);
-                } else
+                }
+                else
                 {
-                    Osnovni_podaci.tipovi.Add(t);
+                    Osnovni_podaci.tipovi2.Add(t);
                     this.Close();
                 }
             }
-
-
-
+        }
 
         }
 
         private void TcloseBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("PomocTip", this);
+        }
+
+        private void TpomocBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("PomocTip", this);
         }
     }
 }

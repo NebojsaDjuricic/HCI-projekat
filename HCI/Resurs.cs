@@ -8,28 +8,28 @@ namespace HCI
 {
     public class Resurs
     {
-        public string OznakaResursa { get; set; }
-        public string ImeResursa { get; set; }
-        public string OpisResursa { get; set; }
+        public String OznakaResursa { get; set; }
+        public String ImeResursa { get; set; }
+        public String OpisResursa { get; set; }
         public Tip TipResursa { get; set; }
-        public string Frekvencija { get; set; }
-        public string IkonicaResursa { get; set; }
-        public string Obnovljiv { get; set; }
-        public string Vaznost { get; set; }
-        public string Eksploatacija { get; set; }
-        public string Jedinica { get; set; }
-        public string Cena { get; set; }
-        public string Datum { get; set; }
-        public Etiketa EtiketaResursa { get; set; }
+        public String Frekvencija { get; set; }
+        public String IkonicaResursa { get; set; }
+        public String Obnovljiv { get; set; }
+        public String Vaznost { get; set; }
+        public String Eksploatacija { get; set; }
+        public String Jedinica { get; set; }
+        public String Cena { get; set; }
+        public String Datum { get; set; }
+        public List<Etiketa> EtiketaResursa { get; set; }
 
-        public Resurs(string oznakaResursa, string imeResursa, string opisResursa, Tip tipResursa, string frekvencijaPojavljivanja, string ikonica, string obnovljivost, string strateskaVaznost, string mogucnostEkspolatacije, string jedinicaMere, string cena, string datum, Etiketa etiketaResursa)
+        public Resurs(string oznakaResursa, string imeResursa, string opisResursa, Tip tipResursa, string frekvencijaPojavljivanja, string ikonicaResursa, string obnovljivost, string strateskaVaznost, string mogucnostEkspolatacije, string jedinicaMere, string cena, string datum, List<Etiketa> etiketaResursa)
         {
             this.OznakaResursa = oznakaResursa;
             this.ImeResursa = imeResursa;
             this.OpisResursa = opisResursa;
             this.TipResursa = tipResursa;
             this.Frekvencija = frekvencijaPojavljivanja;
-            this.IkonicaResursa = ikonica;
+            this.IkonicaResursa = ikonicaResursa;
             this.Obnovljiv = obnovljivost;
             this.Vaznost = strateskaVaznost;
             this.Eksploatacija = mogucnostEkspolatacije;

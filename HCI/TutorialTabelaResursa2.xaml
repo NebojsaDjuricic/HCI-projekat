@@ -1,0 +1,68 @@
+﻿<Window x:Class="HCI.TutorialTabelaResursa2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI"
+        mc:Ignorable="d"
+        Title="Tabela resursa - tutorial" WindowStartupLocation="CenterScreen" Height="430" Width="750" ResizeMode="NoResize" Icon="icon_book_3.jpg">
+    <DockPanel>
+        <Grid DockPanel.Dock="Left" Width="300" Margin="14">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="172*"/>
+                <RowDefinition Height="171*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+
+            <FlowDocumentScrollViewer Grid.Row="0">
+                <FlowDocument>
+                    <Paragraph FontSize="14">
+                        Sortiranje
+                    </Paragraph>
+                    <Paragraph FontSize="12">
+                        Korak 1: Ukoliko zelite da sortirate resurse u tabeli, odaberite kriterijum sortiranja iz padajuce liste.
+                    </Paragraph>
+                    <Paragraph FontSize="12">
+                        Korak 2: U polje ispod unesite tekst po kojem ce resursi biti sortirani.
+                    </Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+
+            <FlowDocumentScrollViewer Grid.Row="1">
+                <FlowDocument >
+                    <Paragraph FontSize="14">
+                        Pretraga
+                    </Paragraph>
+                    <Paragraph FontSize="12">
+                        Korak 1: Ukoliko zelite da pretrazite resurse, unesite oznaku u polje trazi.
+                    </Paragraph>
+                    <Paragraph FontSize="12">
+                        Korak 2: Ukoliko se uneta oznaka poklapa sa nekom od oznaka iz tabele, rezultat pretrage ce biti vidljiv tako sto ce se popuniti podaci o pronadjenom resursu.
+                    </Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+
+            <Button Grid.Row="2" Margin="111,4,111,4" Click="Button_Click" >Prethodni</Button>
+
+        </Grid>
+
+
+        <Grid DockPanel.Dock="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="167*"/>
+                <RowDefinition Height="34*"/>
+                <RowDefinition Height="166*"/>
+                <RowDefinition Height="34*"/>
+
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Margin="3,3" Source="slike/sortiraj.png"></Image>
+            <Label FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"  >Slika 1.</Label>
+            <Image Grid.Row="2" Margin="3,3" Source="slike/trazi.png"></Image>
+            <Label Grid.Row="3" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" >Slika 2.</Label>
+
+
+        </Grid>
+
+    </DockPanel>
+</Window>

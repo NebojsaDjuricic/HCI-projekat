@@ -97,6 +97,11 @@
       <DependentUpon>Dodaj_etiketu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Etiketa.cs" />
+    <Compile Include="Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpProvider.cs" />
+    <Compile Include="JavaScriptControlerHelper.cs" />
     <Compile Include="Resurs.cs" />
     <Compile Include="TabelaEtiketa.xaml.cs">
       <DependentUpon>TabelaEtiketa.xaml</DependentUpon>
@@ -111,7 +116,32 @@
     <Compile Include="Tip_Resursa.xaml.cs">
       <DependentUpon>Tip_Resursa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TutorialTabelaResursa2.xaml.cs">
+      <DependentUpon>TutorialTabelaResursa2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialEtiketa.xaml.cs">
+      <DependentUpon>TutorialEtiketa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialResurs.xaml.cs">
+      <DependentUpon>TutorialResurs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialResurs2.xaml.cs">
+      <DependentUpon>TutorialResurs2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialTabelaResursa.xaml.cs">
+      <DependentUpon>TutorialTabelaResursa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialTabelaTipova.xaml.cs">
+      <DependentUpon>TutorialTabelaTipova.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialTip.xaml.cs">
+      <DependentUpon>TutorialTip.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dodaj_etiketu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +174,34 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tip_Resursa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialTabelaResursa2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialEtiketa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialResurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialResurs2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialTabelaResursa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialTabelaTipova.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TutorialTip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,13 +257,27 @@
   <ItemGroup>
     <Resource Include="Artboard.png" />
     <Resource Include="Close_Icon.png" />
-    <Content Include="Xceed.Wpf.AvalonDock.dll" />
-    <Content Include="Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
-    <Content Include="Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
-    <Content Include="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
-    <Content Include="Xceed.Wpf.DataGrid.dll" />
+    <Resource Include="Help.png" />
+    <Resource Include="icon_book_3.jpg" />
+    <Resource Include="slike\etiketa1.png" />
+    <Resource Include="slike\etiketa2.png" />
+    <Resource Include="slike\tip1.png" />
+    <Resource Include="slike\tip2.png" />
+    <Resource Include="slike\tip_ikonica.png" />
+    <Resource Include="slike\resurs1.png" />
+    <Resource Include="slike\resurs2.png" />
+    <Resource Include="slike\mapa1.png" />
+    <Resource Include="slike\mapa2.png" />
+    <Resource Include="slike\mapa3.png" />
+    <Resource Include="slike\tabela_etiketa.png" />
+    <Resource Include="slike\tabela_tipova.png" />
+    <Resource Include="slike\sortiraj.png" />
+    <Resource Include="slike\tabela_resursa1.png" />
+    <Resource Include="slike\tabela_resursa2.png" />
+    <Resource Include="slike\trazi.png" />
     <Content Include="Xceed.Wpf.Toolkit.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

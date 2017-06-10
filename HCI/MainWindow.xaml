@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI"
         mc:Ignorable="d"
-        Title="Vođenje evidencije o mapi svetskih resursa" Height="430" Width="750" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
-    
+        Title="Vođenje evidencije o mapi svetskih resursa" WindowStartupLocation="CenterScreen" Height="430" Width="750" ResizeMode="NoResize" Icon="icon-power-plant-home.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
+
     <DockPanel>
         <Menu DockPanel.Dock="Top" Height="33">
             <Menu.ItemsPanel>
@@ -27,31 +30,127 @@
                 <MenuItem Header="Etikete" Click="MenuItem_Click_5"></MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Pomoc" HorizontalAlignment="Right"></MenuItem>
-            
+            <MenuItem Header="Tutorial" HorizontalAlignment="Left">
+                <MenuItem Header="Unos podataka o resursima" Click="MenuItem_Click_6"></MenuItem>
+                <MenuItem Header="Unos podataka o tipovima" Click="MenuItem_Click_8"></MenuItem>
+                <MenuItem Header="Unos podataka o etiketama" Click="MenuItem_Click_9"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Tabela resursa" Click="MenuItem_Click_10"></MenuItem>
+                <MenuItem Header="Tabela tipova i etiketa" Click="MenuItem_Click_11"></MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Pomoc" HorizontalAlignment="Right" Click="MenuItem_Click_7"></MenuItem>
+
         </Menu>
-        
-        <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Grid.Background>
-                <ImageBrush ImageSource="crnobelo.jpg"></ImageBrush>
-            </Grid.Background>
-            
-            
-                <ListView Name="listaResursa" MouseLeftButtonDown="listaResursa_MouseLeftButtonDown" MouseLeftButtonUp="listaResursa_MouseLeftButtonUp" ItemsSource="{Binding Path=resLista}" Background="Bisque"  Margin="631,10,10,179"  MinWidth="88" MinHeight="179">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Image Source="{Binding ikonica}" Width="23" Height="23"/>
-                                <TextBlock Text="   " Background="{Binding EtiketaResursa.BojaEtikete}"/>
-                                <TextBlock Text="  -  " />
-                                <TextBlock Text="{Binding ImeResursa}"/>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-      
-            
+
+        <Grid MouseEnter="Grid_MouseEnter" DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="23*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel  AllowDrop="True" DragEnter="DockPanel_DragEnter" Drop="DockPanel_Drop" Grid.Row="0" Grid.Column="0" Grid.RowSpan="8">
+                <Canvas Name="canvas" MouseMove="canvas_MouseMove" Drop="canvas_Drop">
+                    <Canvas.Background>
+                        <ImageBrush  ImageSource="crnobelo.jpg" ></ImageBrush>
+                    </Canvas.Background>
+                </Canvas>
+            </DockPanel>
+
+            <ListView Name="listaResursa" ItemsSource="{Binding Path=resLista}" SelectionChanged="listaResursa_SelectionChanged" PreviewMouseLeftButtonDown="listaResursa_PreviewMouseLeftButtonDown" MouseMove="listaResursa_MouseMove" Background="Bisque"  Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Image Source="{Binding IkonicaResursa}" Width="23" Height="23"/>
+
+                            <TextBlock Text="    " />
+                            <TextBlock Text="{Binding ImeResursa}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="20" Margin="5,8,0,3" > Resurs</TextBlock>
+
+            <Border  Grid.Row="1" Grid.Column="1"  BorderThickness="1" BorderBrush="Gray">
+
+            </Border>
+
+            <ListView Name="listIkoRes" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Path=resIk}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Image Source="{Binding Path=IkonicaResursa}" Width="23" Height="23"></Image>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView Name="listOznRes" ItemsSource="{Binding Path=resOzn}" Grid.Row="3" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="Oznaka: " FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding OznakaResursa}" VerticalAlignment="Center"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView Name="listImeRes" ItemsSource="{Binding Path=resIme}" Grid.Row="4" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="Ime: " FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding ImeResursa}" VerticalAlignment="Center"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView Name="listOpisRes" ItemsSource="{Binding Path=resOpis}" Grid.Row="5" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="Opis: " FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding OpisResursa}" VerticalAlignment="Center"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Height="16" Margin="5,4,0,3" > Etikete</TextBlock>
+
+            <Border  Grid.Row="5" Grid.Column="1"  BorderThickness="1" BorderBrush="Gray">
+
+            </Border>
+
+            <ListView Name="listEtikRes" ItemsSource="{Binding Path=resEtik}" Grid.Row="7" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel >
+                            <TextBlock Text="   " Background="{Binding BojaEtikete}"></TextBlock>
+                            <TextBlock Text="   "></TextBlock>
+                            <TextBlock Text="{Binding OznakaEtikete}" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Name="MWizmeni" Grid.Row="8" Grid.Column="1" Click="MWizmeni_Click" Margin="10,1,64,2" >Izmeni</Button>
+            <Button Name="MWobrisi" Grid.Row="8" Grid.Column="1" Click="MWobrisi_Click" Margin="64,1,10,2" >Obrisi</Button>
+
         </Grid>
-    </DockPanel>        
-           
+    </DockPanel>
+
 </Window>
